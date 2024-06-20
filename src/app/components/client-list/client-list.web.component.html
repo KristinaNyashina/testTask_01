@@ -1,0 +1,64 @@
+<div class="client-list">
+  <div class="client-list_container">
+    <div class="client-list_actions">
+      <button (click)="openAddClientDialog()" class="client-list_actions-button client-list_actions-button-add">
+        <img src="../../assets/icons-color/add-default.svg" alt="Add client icon" width="36" height="36"/>
+      </button>
+      <button (click)="openDeleteClientDialog()" class="client-list_actions-button client-list_actions-button-delete" [disabled]="isDisabled">
+        <img [src]="isDisabled ? '../../assets/icons-color/delete-disable.svg' : '../../assets/icons-color/delete-default.svg'" alt="Delete client icon" width="36" height="36"/>
+      </button>
+    </div>
+
+    <div class="client-list-scroll-container">
+      <table mat-table [dataSource]="dataSource" matSort>
+        <!-- Колонки таблицы -->
+        <ng-container matColumnDef="select">
+          <th mat-header-cell *matHeaderCellDef>
+            <mat-checkbox
+              color="primary"
+              (change)="masterToggle()"
+              [checked]="isAllClientsSelected()"
+              [indeterminate]="selection.hasValue() && !isAllClientsSelected()">
+            </mat-checkbox>
+          </th>
+          <td mat-cell *matCellDef="let row"
+              class="client-list_checkbox-cell">
+            <mat-checkbox
+              color="primary"
+              (click)="$event.stopPropagation()"
+              (change)="$event ? selection.toggle(row) : null"
+              [checked]="selection.isSelected(row)">
+            </mat-checkbox>
+          </td>
+        </ng-container>
+
+        <!-- Остальные колонки -->
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header class="client-list_header-cell">Имя</th>
+          <td mat-cell *matCellDef="let element" class="client-list_cell client-list_cell-name" (click)="openEditClientDialog(element)">{{ element.name }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="surname">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header class="client-list_header-cell">Фамилия</th>
+          <td mat-cell *matCellDef="let element" class="client-list_cell client-list_cell-surname" (click)="openEditClientDialog(element)">{{ element.surname }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="email">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header class="client-list_header-cell">Email</th>
+          <td mat-cell *matCellDef="let element" class="client-list_cell client-list_cell-email" (click)="openEditClientDialog(element)">{{ element.email }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="phone">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header class="client-list_header-cell">Телефон</th>
+          <td mat-cell *matCellDef="let element" class="client-list_cell client-list_cell-phone" (click)="openEditClientDialog(element)">{{ element.phone }}</td>
+        </ng-container>
+
+        <!-- Определение строк и их отображение -->
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"
+            [class.selected-row]="selection.isSelected(row)">
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

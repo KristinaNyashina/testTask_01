@@ -1,0 +1,16 @@
+@import '../../../assets/styles/master-styles';
+
+.header{
+  display: flex;
+  justify-content: space-between;
+  margin: 16px 12px 26px;
+  align-items: center;
+
+  &_title{
+    font-size: 28px;
+    color: $color-primary;
+    margin: 0;
+    font-family: $font-primary;
+    font-weight: $font-weight-medium;
+  }
+}

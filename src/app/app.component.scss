@@ -1,0 +1,22 @@
+@use '@angular/material' as mat;
+@use "../assets/styles/master-styles" as *;
+
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+
+
+@include mat.core();
+
+* {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background-color: $color-bg-body;
+  color: $color-text-secondary;
+  font-family: 'Roboto', sans-serif;
+}
+
+.main-container {
+  margin: 0 auto;
+  padding: 16px;
+  box-sizing: border-box;
+}

@@ -1,0 +1,46 @@
+<div class="dialog">
+  <h1 [class]="action === 'delete' ? 'dialog-delete-subtitle' : 'dialog-subtitle'">
+    {{ action === 'add' ? 'Новый клиент' : action === 'edit' ? 'Редактирование' : 'Удаление строк' }}
+  </h1>
+
+  <div class="dialog_content">
+    <form class="dialog_form" [formGroup]="clientForm" *ngIf="!isDeleteMode">
+      <mat-form-field class="dialog_form-field" appearance="outline">
+        <mat-label>Имя</mat-label>
+        <input matInput formControlName="name">
+        <mat-error align="end" *ngIf="clientForm.get('name')?.invalid">Минимальное количество символов: 2</mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="dialog_form-field" appearance="outline">
+        <mat-label>Фамилия</mat-label>
+        <input matInput formControlName="surname">
+        <mat-error align="end" *ngIf="clientForm.get('surname')?.invalid">Минимальное количество символов: 2</mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="dialog_form-field" appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email">
+        <mat-error align="end" *ngIf="clientForm.get('email')?.invalid">Некорректный адрес</mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="dialog_form-field" appearance="outline">
+        <mat-label>Телефон</mat-label>
+        <input matInput formControlName="phone">
+        <mat-error align="end" *ngIf="clientForm.get('phone')?.invalid ">Некорректный номер телефона</mat-error>
+      </mat-form-field>
+
+      <div class="dialog_actions" mat-dialog-actions>
+        <button class="dialog_button dialog_button-cancel" mat-button (click)="onCancel()">Отмена</button>
+        <button class="dialog_button dialog_button-save" mat-flat-button color="primary" (click)="onSave()" [disabled]="!clientForm?.valid">Сохранить</button>
+      </div>
+    </form>
+
+    <div *ngIf="isDeleteMode">
+      <p class="dialog_text">Удалить выбранные строки ({{data.selectedClients?.length}})?</p>
+      <div class="dialog_actions" mat-dialog-actions>
+        <button class="dialog_button dialog_button-cancel" mat-button (click)="onCancel()">Отмена</button>
+        <button class="dialog_button dialog_button-delete" mat-button (click)="onDelete()">Удалить</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,103 @@
+@import '../../../assets/styles/master-styles';
+
+.dialog {
+  padding: 24px 40px 40px;
+  border-radius: 20px;
+
+  &_form {
+    box-shadow: none !important;
+  }
+
+  &-subtitle {
+    @include custom-heading-styles;
+    margin-bottom: 30px;
+    padding: 0;
+  }
+
+  &-delete-subtitle {
+    @include custom-heading-styles;
+    margin-bottom: 18px;
+    padding: 0;
+  }
+
+  &_text {
+    margin: 0;
+    padding-bottom: 85px;
+    font-size: $font-size-l;
+    letter-spacing: 0.25px;
+    color: $color-text-primary;
+  }
+
+  &_actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 4px;
+  }
+
+  &_form-field {
+    width: 100%;
+    margin-bottom: 20px;
+    font-size: $font-size-m;
+    font-family: $font-primary;
+    letter-spacing: 0.25px;
+    line-height: 22px;
+    color: $color-text-tertiary;
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+
+  &_button-cancel {
+    @include basic-button-styles;
+    ::ng-deep .mdc-button__label {
+      color: $color-primary;
+    }
+
+    &:hover {
+      background-color: rgba(60, 124, 248, 0.1);
+    }
+
+    &:active {
+      background-color: rgba(25, 78, 182, 0.2);
+    }
+  }
+
+  &_button-delete,
+  &_button-save {
+    @include flat-button-styles;
+    ::ng-deep .mdc-button__label {
+      color: #FFFFFF;
+    }
+
+    &:hover {
+      background-color: $color-secondary;
+    }
+
+    &:active {
+      background-color: $btn-primary-bg-active;
+    }
+
+    &:disabled {
+      background-color: $btn-primary-bg-color-disabled;
+    }
+  }
+}
+
+mat-error {
+  font-size: $font-size-xs;
+}
+
+::ng-deep .mat-mdc-dialog-container .mdc-dialog__surface {
+  box-shadow: none !important;
+  border-radius: 20px;
+}
+
+::ng-deep .mdc-dialog .mdc-dialog__content {
+  padding: 10px 0 0;
+  width: 100%;
+}
+
+::ng-deep .mdc-dialog__actions {
+  padding: 0;
+}

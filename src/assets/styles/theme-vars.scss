@@ -1,0 +1,28 @@
+/* Основные цвета */
+$color-primary: #2F67D5;
+$color-secondary: #3C7CF8;
+
+/* Текст */
+$color-text-primary: #263238;
+$color-text-secondary: #231F20;
+$color-text-tertiary: #1A2124;
+
+/* Фон */
+$color-bg-body: #E9F3FF;
+
+/* Строка таблицы */
+$color-bg-row-hover: #E9F0FF;
+
+/* Кнопки */
+$btn-font-size: 18px;
+$btn-primary-radius: 37px;
+$btn-primary-bg-color: $color-primary;
+$btn-primary-bg-active: #194EB6;
+$btn-primary-bg-color-disabled: #D8DEE9;
+$btn-primary-text-color-disabled: #FFFFFF;
+$btn-primary-text-color: #FFFFFF;
+$btn-primary-bg-hover: $color-secondary;
+
+$btn-secondary-text-color: $color-primary;
+$btn-secondary-bg-active: rgba(25, 78, 182, 0.2);
+$btn-secondary-bg-hover: rgba(60, 124, 248, 0.1);
